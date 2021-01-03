@@ -1,6 +1,10 @@
 package cn.edu.cqie.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSONObject;
 
 import cn.edu.cqie.bo.AccountBo;
 import cn.edu.cqie.enums.GameAccountHighlightsEnum;
@@ -15,8 +19,12 @@ import cn.edu.cqie.service.AccountService;
 @Service
 public class AccountImpl implements AccountService {
 
+	private final static Logger logger = LoggerFactory.getLogger(AccountImpl.class);
+
 	@Override
 	public AccountBo load(AccountBo bo) {
+
+		logger.info("AccountImpl-load-in,{}", JSONObject.toJSONString(bo));
 
 		// 1加载大区
 		bo.setGameAreaLst(GameAreaEnum.getAll());
@@ -38,7 +46,8 @@ public class AccountImpl implements AccountService {
 
 		// 7.加载账号亮点
 		bo.setGameAccountHighlightsLst(GameAccountHighlightsEnum.getAll());
-		
+
+		logger.info("AccountImpl-load-return,{}", JSONObject.toJSONString(bo));
 		return bo;
 	}
 
