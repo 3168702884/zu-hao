@@ -6,23 +6,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author potato Game大区
+ * @author potato GameSectEnum 门派
  */
-public enum GameAreaEnum {
+public enum GameSectEnum {
 
-	D1(11, "000011", "电一"),
+	SHAOLIN(1, "000001", "少林"),
 
-	d5(15, "000015", "电五"),
+	WANHUA(2, "000002", "万花"),
 
-	d8(18, "000018", "电八"),
+	QIXIU(3, "000003", "七秀"),
 
-	S1(21, "000021", "双一"),
+	CHUNYANG(4, "000004", "纯阳"),
 
-	S2(22, "000022", "双一"),
+	TIANCE(5, "000005", "天策"),
 
-	S4(24, "000024", "双一"),
+	ZANGJIAN(6, "000006", "藏剑"),
 
-	S5(127, "000127", "体验服"),;
+	WUDU(7, "000007", "五毒"),
+
+	MING(8, "000008", "明教");
 
 	private int code; // 本地数据库值
 	private String distCode; // 远程
@@ -52,14 +54,14 @@ public enum GameAreaEnum {
 		this.message = message;
 	}
 
-	private GameAreaEnum(int code, String distCode, String message) {
+	private GameSectEnum(int code, String distCode, String message) {
 		this.code = code;
 		this.distCode = distCode;
 		this.message = message;
 	}
-
-	public static GameAreaEnum getByDistCode(String distCode) {
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+	
+	public static GameSectEnum getByDistCode(String distCode) {
+		for (GameSectEnum c : GameSectEnum.values()) {
 			if (c.getDistCode().equals(distCode)) {
 				return c;
 			}
@@ -67,8 +69,8 @@ public enum GameAreaEnum {
 		return null;
 	}
 
-	public static GameAreaEnum getByCode(int code) {
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+	public static GameSectEnum getByCode(int code) {
+		for (GameSectEnum c : GameSectEnum.values()) {
 			if (c.getCode() == code) {
 				return c;
 			}
@@ -78,11 +80,11 @@ public enum GameAreaEnum {
 
 	public static List<Map<String, Object>> getAll() {
 		List<Map<String, Object>> lst = new ArrayList<Map<String, Object>>();
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+		for (GameSectEnum c : GameSectEnum.values()) {
 			Map<String, Object> item = new HashMap<String, Object>();
-			item.put("gameArea", c.getDistCode());
+			item.put("gameSect", c.getDistCode());
 			item.put("name", c.getMessage());
-			
+
 			lst.add(item);
 		}
 		return lst;

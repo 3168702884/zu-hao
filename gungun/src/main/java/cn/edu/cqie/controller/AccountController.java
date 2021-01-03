@@ -41,7 +41,13 @@ public class AccountController {
 		// 3业务逻辑处理
 		accountService.load(bo);
 
-		result.put("省市区Json", bo.getClass());
+		result.put("gameAreaLst", bo.getGameAreaLst());
+		result.put("gameServerLst", bo.getGameServerLst());
+		result.put("gameCampLst", bo.getGameCampLst());
+		result.put("gameSectLst", bo.getGameSectLst());
+		result.put("gamebodyTypeLst", bo.getGamebodyTypeLst());
+		result.put("gameEquipmentLst", bo.getGameEquipmentLst());
+		result.put("gameAccountHighlightsLst", bo.getGameAccountHighlightsLst());
 
 		return ResultBean.success(result);
 	}

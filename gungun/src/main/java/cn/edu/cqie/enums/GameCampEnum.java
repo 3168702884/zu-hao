@@ -6,23 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author potato Game大区
+ * @author potato GameCampEnum 阵营
  */
-public enum GameAreaEnum {
+public enum GameCampEnum {
+	GOODBOY(1, "000001", "浩气盟"),
 
-	D1(11, "000011", "电一"),
-
-	d5(15, "000015", "电五"),
-
-	d8(18, "000018", "电八"),
-
-	S1(21, "000021", "双一"),
-
-	S2(22, "000022", "双一"),
-
-	S4(24, "000024", "双一"),
-
-	S5(127, "000127", "体验服"),;
+	BADBOY(2, "000002", "恶人谷");
 
 	private int code; // 本地数据库值
 	private String distCode; // 远程
@@ -52,14 +41,14 @@ public enum GameAreaEnum {
 		this.message = message;
 	}
 
-	private GameAreaEnum(int code, String distCode, String message) {
+	private GameCampEnum(int code, String distCode, String message) {
 		this.code = code;
 		this.distCode = distCode;
 		this.message = message;
 	}
 
-	public static GameAreaEnum getByDistCode(String distCode) {
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+	public static GameCampEnum getByDistCode(String distCode) {
+		for (GameCampEnum c : GameCampEnum.values()) {
 			if (c.getDistCode().equals(distCode)) {
 				return c;
 			}
@@ -67,8 +56,8 @@ public enum GameAreaEnum {
 		return null;
 	}
 
-	public static GameAreaEnum getByCode(int code) {
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+	public static GameCampEnum getByCode(int code) {
+		for (GameCampEnum c : GameCampEnum.values()) {
 			if (c.getCode() == code) {
 				return c;
 			}
@@ -78,14 +67,13 @@ public enum GameAreaEnum {
 
 	public static List<Map<String, Object>> getAll() {
 		List<Map<String, Object>> lst = new ArrayList<Map<String, Object>>();
-		for (GameAreaEnum c : GameAreaEnum.values()) {
+		for (GameCampEnum c : GameCampEnum.values()) {
 			Map<String, Object> item = new HashMap<String, Object>();
-			item.put("gameArea", c.getDistCode());
+			item.put("gameCamp", c.getDistCode());
 			item.put("name", c.getMessage());
-			
+
 			lst.add(item);
 		}
 		return lst;
 	}
-
 }
