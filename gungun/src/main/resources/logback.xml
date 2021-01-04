@@ -81,7 +81,7 @@
 
 		<file>${configLogFile}.log</file>
 		<encoder>
-			<!--日志输出格式 -->
+			<!-- 日志输出格式 -->
 			<pattern>%d [%thread] %-5level -[%file:%line]- %msg%n</pattern>
 			<charset>UTF-8</charset>
 		</encoder>
